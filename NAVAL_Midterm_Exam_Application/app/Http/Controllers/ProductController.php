@@ -19,9 +19,9 @@ class ProductController extends Controller
 
     public function showProducts(Request $request)
     {
-        $category = $request->input('category', 'all'); 
+        $category = $request->input('category', 'all'); // Default to 'all' if no category is selected
 
-  
+        // Filter products based on the selected category
         $filteredProducts = ($category === 'all') 
             ? $this->products 
             : array_filter($this->products, fn($product) => $product['category'] === $category);
